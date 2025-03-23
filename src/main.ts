@@ -148,7 +148,7 @@ class RecursiveCube{
         const i = dx + dy * 2;
         if (this.children[i] == null)
           this.children[i] = new RecursiveCube();      
-        this.children[i].render(x+r*dx, y + r * dy, s-1);
+        this.children[i]!.render(x+r*dx, y + r * dy, s-1);
       }
     }
     return;
