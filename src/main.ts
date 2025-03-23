@@ -14,7 +14,7 @@ const renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
-const mat = new THREE.MeshBasicMaterial({ color: 0x0055ff });
+const mat = new THREE.MeshBasicMaterial({ color: 0xff0022 });
 
 function addgeometry(geometry:THREE.BufferGeometry, material= mat){
 
@@ -97,12 +97,16 @@ document.addEventListener('keyup', (event) => {
 
 
 function getcolor(x:number, y:number){
-  const c = Math.floor(x*34.7 + y*73.63 * y) % 2;
-  const b = 0x004aa
-  return b + c * (0x448800 - b);
+  const c = Math.floor((x * 100 + y + 34.5) ** 2.3) % 0xf0;
+  return color(c);
 }
 
 
+function color(t:number){
+  const a = 0x010100;
+  const b = 0x010001;
+  return a * t + b * (1-t);
+}
 
 const plane = addPlane();
 
